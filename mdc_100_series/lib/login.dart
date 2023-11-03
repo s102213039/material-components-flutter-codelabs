@@ -23,6 +23,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   // TODO: Add text editing controllers (101)
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,12 +38,56 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 Image.asset('assets/diamond.png'),
                 const SizedBox(height: 16.0),
-                const Text('SHRINE'),
+                const Text('ABCD'),
               ],
             ),
             const SizedBox(height: 120.0),
             // TODO: Remove filled: true values (103)
             // TODO: Add TextField widgets (101)
+            TextField(
+              controller: _usernameController,
+              decoration: InputDecoration(
+                filled: true,
+                labelText: 'Username',
+              ),
+            ),
+            const SizedBox(height: 12.0),
+            TextField(
+              controller: _passwordController,
+              decoration: InputDecoration(
+                filled: true,
+                labelText: 'Password',
+              ),
+              obscureText: true,
+            ),
+
+            const SizedBox(height: 20.0),
+
+            OverflowBar(
+              alignment: MainAxisAlignment.center,
+              spacing: 20.0,
+              children: [
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8)),
+                      side: BorderSide(
+                        width: 1,
+                        color: Theme.of(context).colorScheme.primary,
+                      )),
+                  child: Text('Cancel'),
+                  onPressed: () {
+                    _usernameController.clear();
+                    _passwordController.clear();
+                  },
+                ),
+                ElevatedButton(
+                    child: Text('Next'),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    }),
+              ],
+            ),
             // TODO: Add button bar (101)
           ],
         ),
