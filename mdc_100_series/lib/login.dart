@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import 'package:flutter/material.dart';
+import 'package:shrine/colors.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -38,7 +39,10 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 Image.asset('assets/diamond.png'),
                 const SizedBox(height: 16.0),
-                const Text('ABCD'),
+                Text(
+                  'ABCD',
+                  style: Theme.of(context).textTheme.headlineSmall,
+                ),
               ],
             ),
             const SizedBox(height: 120.0),
@@ -47,7 +51,7 @@ class _LoginPageState extends State<LoginPage> {
             TextField(
               controller: _usernameController,
               decoration: InputDecoration(
-                filled: true,
+                // filled: true,
                 labelText: 'Username',
               ),
             ),
@@ -55,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
             TextField(
               controller: _passwordController,
               decoration: InputDecoration(
-                filled: true,
+                // filled: true,
                 labelText: 'Password',
               ),
               obscureText: true,
@@ -64,16 +68,18 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 20.0),
 
             OverflowBar(
-              alignment: MainAxisAlignment.center,
+              alignment: MainAxisAlignment.end,
               spacing: 20.0,
               children: [
                 OutlinedButton(
                   style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
+                      foregroundColor: kShrineBrown900,
+                      primary: Theme.of(context).colorScheme.secondary,
+                      shape: const BeveledRectangleBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(7.0))),
                       side: BorderSide(
                         width: 1,
-                        color: Theme.of(context).colorScheme.primary,
+                        color: Theme.of(context).colorScheme.secondary,
                       )),
                   child: Text('Cancel'),
                   onPressed: () {
@@ -82,10 +88,18 @@ class _LoginPageState extends State<LoginPage> {
                   },
                 ),
                 ElevatedButton(
-                    child: Text('Next'),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    }),
+                  child: Text('Next'),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  style: ElevatedButton.styleFrom(
+                      foregroundColor: kShrineBrown900,
+                      backgroundColor: kShrinePink100,
+                      elevation: 8.0,
+                      shape: const BeveledRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(7.0)),
+                      )),
+                ),
               ],
             ),
             // TODO: Add button bar (101)
