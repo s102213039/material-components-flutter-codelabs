@@ -14,9 +14,11 @@
 
 import 'package:flutter/material.dart';
 
+import 'backdrop.dart';
 import 'colors.dart';
 import 'home.dart';
 import 'login.dart';
+import 'model/product.dart';
 import 'supplemental/cut_corners_border.dart';
 
 // TODO: Convert ShrineApp to stateful widget (104)
@@ -31,7 +33,15 @@ class ShrineApp extends StatelessWidget {
       routes: {
         '/login': (BuildContext context) => const LoginPage(),
         // TODO: Change to a Backdrop with a HomePage frontLayer (104)
-        '/': (BuildContext context) => const HomePage(),
+        '/': (BuildContext context) => Backdrop(
+            currentCategory: Category.all,
+            frontLayer: HomePage(),
+            backLayer: Container(
+              color: kShrinePink100,
+            ),
+            frontTitle: Text('SHRINE'
+                ''),
+            backTitle: Text('MENU')),
         // TODO: Make currentCategory field take _currentCategory (104)
         // TODO: Pass _currentCategory for frontLayer (104)
         // TODO: Change backLayer field value to CategoryMenuPage (104)
@@ -44,28 +54,31 @@ class ShrineApp extends StatelessWidget {
 final ThemeData _kShrineTheme = _buildShrineTheme();
 
 ThemeData _buildShrineTheme() {
-  final ThemeData base = ThemeData.light(useMaterial3: true);
+  final ThemeData base = ThemeData.light();
   return base.copyWith(
     colorScheme: base.colorScheme.copyWith(
-      primary: kShrinePink100,
-      onPrimary: kShrineBrown900,
-      secondary: kShrineBrown900,
+      primary: kShrinePurple,
+      secondary: kShrinePurple,
       error: kShrineErrorRed,
     ),
-    textTheme: _buildShrineTextTheme(base.textTheme),
+    scaffoldBackgroundColor: kShrineSurfaceWhite,
     textSelectionTheme: const TextSelectionThemeData(
-      selectionColor: kShrinePink100,
+      selectionColor: kShrinePurple,
+    ),
+    appBarTheme: const AppBarTheme(
+      foregroundColor: kShrineBrown900,
+      backgroundColor: kShrinePink100,
     ),
     inputDecorationTheme: const InputDecorationTheme(
         border: CutCornersBorder(),
         focusedBorder: CutCornersBorder(
           borderSide: BorderSide(
             width: 2.0,
-            color: kShrineBrown900,
+            color: kShrinePurple,
           ),
         ),
         floatingLabelStyle: TextStyle(
-          color: kShrineBrown900,
+          color: kShrinePurple,
         )),
   );
 }

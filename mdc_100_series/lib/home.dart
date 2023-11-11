@@ -19,9 +19,6 @@ import 'package:shrine/supplemental/asymmetric_view.dart';
 import 'model/product.dart';
 import 'model/products_repository.dart';
 
-import 'supplemental/asymmetric_view.dart';
-
-
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
@@ -90,90 +87,6 @@ class HomePage extends StatelessWidget {
   // TODO: Add a variable for Category (104)
   @override
   Widget build(BuildContext context) {
-    // TODO: Return an AsymmetricView (104)
-    // TODO: Pass Category variable to AsymmetricView (104)
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
-        leading: IconButton(
-            onPressed: () {
-              print('Menu button');
-            },
-            icon: Icon(
-              Icons.menu,
-              semanticLabel: 'menu',
-            )),
-        title: Text('SHRINE'),
-        actions: [
-          IconButton(
-              onPressed: () {
-                print('Search button');
-              },
-              icon: Icon(
-                Icons.search,
-                semanticLabel: 'search',
-              )),
-          IconButton(
-              onPressed: () {
-                print('Filter button');
-              },
-              icon: Icon(
-                Icons.tune,
-                semanticLabel: 'filter',
-              )),
-        ],
-      ),
-      // TODO: Add app bar (102)
-      // TODO: Add a grid view (102)
-      body: GridView.count(
-          crossAxisCount: 2,
-          padding: const EdgeInsets.all(16.0),
-          childAspectRatio: 8.0 / 9.0,
-          children: _buildGridCards(context)
-
-          // Card(
-          //   elevation: 15.0,
-          //   color: Colors.yellow,
-          //   clipBehavior: Clip.antiAlias,
-          //   child: Container(
-          //     color: Colors.blue,
-          //     child: Column(
-          //       crossAxisAlignment: CrossAxisAlignment.start,
-          //       children: [
-          //         Container(
-          //           color: Colors.pink,
-          //           child: AspectRatio(
-          //             aspectRatio: 18.0 / 11.0,
-          //             child: Image.asset('assets/diamond.png'),
-          //           ),
-          //         ),
-          //         Container(
-          //           color: Colors.deepPurpleAccent,
-          //           child: Padding(
-          //             padding: const EdgeInsets.all(16.0),
-          //             child: Container(
-          //               color: Colors.green,
-          //               child: Column(
-          //                 crossAxisAlignment: CrossAxisAlignment.start,
-          //                 children: [
-          //                   Text('Title'),
-          //                   const SizedBox(
-          //                     height: 8.0,
-          //                   ),
-          //                   Text('Secomdary Text'),
-          //                 ],
-          //               ),
-          //             ),
-          //           ),
-          //         ),
-          //       ],
-          //     ),
-          //   ),
-          // )
-
-          ),
-      // TODO: Set resizeToAvoidBottomInset (101)
-      resizeToAvoidBottomInset: false,
-    );
+    return AsymmetricView(products: ProductsRepository.loadProducts(Category.all));
   }
 }
