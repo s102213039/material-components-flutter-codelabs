@@ -3,7 +3,6 @@ import 'package:shrine/login.dart';
 
 import 'model/product.dart';
 
-// TODO: Add velocity constant (104)
 
 const double _kFlingVelocity = 2.0;
 
@@ -27,12 +26,10 @@ class Backdrop extends StatefulWidget {
   _BackdropState createState() => _BackdropState();
 }
 
-// TODO: Add _BackdropState class (104)
 class _BackdropState extends State<Backdrop>
     with SingleTickerProviderStateMixin {
   final GlobalKey _backdropKey = GlobalKey(debugLabel: 'Backdrop');
 
-  // TODO: Add AnimationController widget (104)
   late AnimationController _controller;
 
   @override
@@ -62,7 +59,6 @@ class _BackdropState extends State<Backdrop>
         velocity: _frontLayerVisible ? -_kFlingVelocity : _kFlingVelocity);
   }
 
-  // TODO: Add BuildContext and BoxConstraints parameters to _buildStack (104)
 
   Widget _buildStack(BuildContext context, BoxConstraints constraints) {
     const double layerTitleHeight = 48.0;
@@ -78,7 +74,6 @@ class _BackdropState extends State<Backdrop>
     return Stack(
       key: _backdropKey,
       children: <Widget>[
-        // TODO: Wrap backLayer in an ExcludeSemantics widget (104)
         ExcludeSemantics(
           child: widget.backLayer,
           excluding: _frontLayerVisible,
@@ -108,9 +103,6 @@ class _BackdropState extends State<Backdrop>
     var appBar = AppBar(
       elevation: 0.0,
       titleSpacing: 0.0,
-      // TODO: Replace leading menu icon with IconButton (104)
-      // TODO: Remove leading property (104)
-      // TODO: Create title with _BackdropTitle parameter (104)
       leading: IconButton(
         icon: Icon(Icons.menu),
         onPressed: _toggleBackdropLayerVisibility,
@@ -121,14 +113,12 @@ class _BackdropState extends State<Backdrop>
           frontTitle: widget.frontTitle,
           backTitle: widget.backTitle),
       actions: <Widget>[
-        // TODO: Add shortcut to login screen from trailing icons (104)
         IconButton(
           icon: Icon(
             Icons.search,
             semanticLabel: 'login',
           ),
           onPressed: () {
-            // TODO: Add open login (104)
             Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -141,7 +131,6 @@ class _BackdropState extends State<Backdrop>
             semanticLabel: 'login',
           ),
           onPressed: () {
-            // TODO: Add open login (104)
             Navigator.push(
                 context,
                 MaterialPageRoute(
